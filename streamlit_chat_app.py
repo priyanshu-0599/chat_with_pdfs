@@ -11,8 +11,6 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain_openai.chat_models import ChatOpenAI
 from htmlTemplates import css,bot_template,user_template
 
-
-
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
