@@ -1,1 +1,1 @@
-# chat_with_pdfs
+# Chat with Multiple PDFs
