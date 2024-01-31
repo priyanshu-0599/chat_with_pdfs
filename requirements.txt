@@ -5,5 +5,5 @@ langchain-openai
 langchain-community
 streamlit
 python-dotenv
-chromadb
+chromadb == 0.3.29
 PyPDF2
