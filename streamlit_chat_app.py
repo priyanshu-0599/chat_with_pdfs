@@ -36,7 +36,7 @@ def get_vectorstore(text_chunks):
     vectordb = None
 
 def get_conversation_chain(user_question):
-    llm = ChatOpenAI(model="gpt-3.5-turbo-1106",temperature=0.1,api_key= os.environ.get('OPENAI_API_KEY'))
+    llm = ChatOpenAI(model="gpt-4-0613",temperature=0.1,api_key= os.environ.get('OPENAI_API_KEY'))
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002",api_key=os.environ.get('OPENAI_API_KEY'))
     vectordb = Chroma(persist_directory='db',embedding_function=embeddings)
     memory = ConversationBufferMemory(memory_key='chat_history',return_messages=True)
