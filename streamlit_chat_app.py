@@ -30,13 +30,13 @@ def get_text_chunks(raw_text):
 
 def get_vectorstore(text_chunks):
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002",api_key=os.environ.get('OPENAI_API_KEY'))
-    vectordb = Chroma.from_documents(persist_directory=persist_directory,documents=text_chunks,embedding=embeddings)
+    vectordb = Chroma.from_documents(documents=text_chunks,embedding=embeddings)
     vectordb = None
 
 def get_conversation_chain(user_question):
     llm = ChatOpenAI(model="gpt-4-0613",temperature=0.1,api_key= os.environ.get('OPENAI_API_KEY'))
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002",api_key=os.environ.get('OPENAI_API_KEY'))
-    vectordb = Chroma(persist_directory='db',embedding_function=embeddings)
+    vectordb = Chroma(embedding_function=embeddings)
     memory = ConversationBufferMemory(memory_key='chat_history',return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(llm=llm,
                                                     retriever=vectordb.as_retriever(),
