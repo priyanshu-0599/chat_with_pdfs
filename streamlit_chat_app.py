@@ -31,7 +31,6 @@ def get_text_chunks(raw_text):
 def get_vectorstore(text_chunks):
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002",api_key=os.environ.get('OPENAI_API_KEY'))
     vectordb = Chroma.from_documents(documents=text_chunks,embedding=embeddings)
-    vectordb = None
 
 def get_conversation_chain(user_question):
     llm = ChatOpenAI(model="gpt-4-0613",temperature=0.1,api_key= os.environ.get('OPENAI_API_KEY'))
