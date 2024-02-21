@@ -30,9 +30,7 @@ def get_text_chunks(raw_text):
 
 def get_vectorstore(text_chunks):
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002",api_key=os.environ.get('OPENAI_API_KEY'))
-    persist_directory = 'db'
     vectordb = Chroma.from_documents(persist_directory=persist_directory,documents=text_chunks,embedding=embeddings)
-    vectordb.persist()
     vectordb = None
 
 def get_conversation_chain(user_question):
